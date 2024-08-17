@@ -1,8 +1,11 @@
 package com.ordem_servico.romero.controller.entity.dto;
 
+import java.io.Serializable;
+
 import com.ordem_servico.romero.controller.entity.OrdenServico;
 
-public class OrdenServicoDTO {
+public class OrdenServicoDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
 
     private Long id;
 

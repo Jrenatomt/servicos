@@ -2,6 +2,7 @@ package com.ordem_servico.romero.controller;
 
 import java.net.URI;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,13 +40,13 @@ public class OrdenServicoController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<OrdenServicoDTO> update(@RequestBody OrdenServicoDTO dto, @PathVariable Long id) {
+    public ResponseEntity<OrdenServicoDTO> update(@RequestBody @Valid OrdenServicoDTO dto, @PathVariable Long id) {
     	OrdenServicoDTO newDto = service.update(id, dto);
     	return ResponseEntity.ok().body(newDto);
     }
     
     @PostMapping
-    public ResponseEntity<OrdenServicoDTO> salvaOrdenServico(@RequestBody OrdenServicoDTO request){
+    public ResponseEntity<OrdenServicoDTO> salvaOrdenServico(@RequestBody @Valid OrdenServicoDTO request){
         OrdenServicoDTO dto = service.salva(request);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);

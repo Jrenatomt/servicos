@@ -3,14 +3,17 @@ package com.ordem_servico.romero.controller.entity.dto;
 import java.io.Serializable;
 
 import com.ordem_servico.romero.controller.entity.OrdenServico;
+import jakarta.validation.constraints.NotEmpty;
 
 public class OrdenServicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     private Long id;
 
+    @NotEmpty
     private String descricao;
 
+    @NotEmpty
     private String solicitante;
 
     public OrdenServicoDTO() {
